@@ -7,7 +7,7 @@ class TaskListApp:
         self.root.geometry(f'{width}x{height}+{x}+{y}')
         self.root.title(title)
         self.root.resizable(False, False)
-        self.root.config(bg="#F5F5F5")
+        self.root.config(bg="#f0dbff")
 
         self.label_color = "#8D4AEA"
         self.button_color = "#5E35B1"
@@ -51,8 +51,13 @@ class TaskListApp:
         ]
 
         for idx, (text, command) in enumerate(buttons):
-            Button(self.button_frame, text=text, command=command, bg=self.button_color, fg='white', bd=0,
-                   font=('Arial', 12, 'bold'), width=10, relief='flat').grid(row=0, column=idx, padx=10, pady=10)
+            btn = Button(self.button_frame, text=text, command=command, bg=self.button_color, fg='white', bd=0,
+                         font=('Arial', 12, 'bold'), width=10, relief='flat')
+            btn.place(x=10 + (idx * 120), y=10)
+            btn.config(borderwidth=0, highlightthickness=0, highlightbackground="#f0dbff")
+            btn.config(borderwidth=0, highlightthickness=0, highlightbackground="#f0dbff", highlightcolor="#f0dbff", border=0, highlightbackground="#f0dbff")
+            btn.config(highlightbackground="#f0dbff", border=0, highlightcolor="#f0dbff")
+            btn.config(highlightbackground="#f0dbff", border=0, highlightcolor="#f0dbff", highlightthickness=0)
 
     def add_task(self, event=None):
         task = self.entry.get().strip()
@@ -86,6 +91,6 @@ class TaskListApp:
 
 if __name__ == '__main__':
     root = Tk()
-    app = TaskListApp(root, 600, 500, 390, 100, 'ToDo List')  # Adjusted height and position
+    app = TaskListApp(root, 700, 550, 350, 50, 'ToDo List')  # Adjusted width, height, and position
     app.draw_widgets()
     root.mainloop()
